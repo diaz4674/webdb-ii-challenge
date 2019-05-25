@@ -1,12 +1,16 @@
 const express = require('express');
 const helmet = require('helmet');
 
+const zooRouter = require('./lambda/lambda-router.js')
+
 const server = express();
 
 server.use(express.json());
 server.use(helmet());
 
 // endpoints here
+
+server.use('/api/zoo', zooRouter); //Setting the endpoint to the route folder
 
 const port = 3300;
 server.listen(port, function() {
